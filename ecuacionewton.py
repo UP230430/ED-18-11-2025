@@ -67,14 +67,14 @@ def calcular_todo():
         # Determinar tipo de solución + mostrar m₁ y m₂
         if abs(m1 - m2) < 1e-6:
             caso = "Caso I (Raíz doble)"
-            texto_resultados.insert(tk.END, "👉 CASO I: Raíz doble\n")
+            texto_resultados.insert(tk.END, "-> CASO I: Raíz doble\n")
             texto_resultados.insert(
                 tk.END,
                 f"x(t) = k1 · e^({m1:.6f}·t)  +  t · k2 · e^({m1:.6f}·t)\n"
             )
         else:
             caso = "Caso II (Raíces distintas)"
-            texto_resultados.insert(tk.END, "👉 CASO II: Raíces distintas\n")
+            texto_resultados.insert(tk.END, "-> CASO II: Raíces distintas\n")
             texto_resultados.insert(
                 tk.END,
                 f"x(t) = k1 · e^({m1:.6f}·t)  +  k2 · e^({m2:.6f}·t)\n"
@@ -180,3 +180,4 @@ texto_resultados = scrolledtext.ScrolledText(ventana, width=70, height=18)
 texto_resultados.pack(padx=10, pady=10)
 
 ventana.mainloop()
+
