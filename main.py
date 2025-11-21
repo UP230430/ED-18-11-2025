@@ -1,3 +1,4 @@
+# main_launcher.py
 import os
 import sys
 import subprocess
@@ -10,6 +11,7 @@ PY = sys.executable
 # Nombres de archivo (asume que están en la misma carpeta que este archivo)
 TRAP_FILE = "Metodo_Trapecios.py"
 NEWTON_FILE = "metodonewton.py"
+ECUA_FILE ="ecuacionewton.py"
 
 def run_script(filename):
     """Lanza un script en un nuevo proceso."""
@@ -29,9 +31,10 @@ def abrir_trapecios():
 def abrir_newton():
     run_script(NEWTON_FILE)
 
-def abrir_ambos():
-    run_script(TRAP_FILE)
-    run_script(NEWTON_FILE)
+def abrir_ecua():
+    run_script(ECUA_FILE)
+
+
 
 # Interfaz gráfica simple
 def crear_ventana():
@@ -45,7 +48,7 @@ def crear_ventana():
 
     tk.Button(btn_frame, text="Método del Trapecio", width=22, command=abrir_trapecios, bg="#b3e6b3").grid(row=0, column=0, padx=5, pady=5)
     tk.Button(btn_frame, text="Newton-Raphson", width=22, command=abrir_newton, bg="#cfe8ff").grid(row=1, column=0, padx=5, pady=5)
-    tk.Button(btn_frame, text="Abrir ambos", width=22, command=abrir_ambos, bg="#ffd9b3").grid(row=2, column=0, padx=5, pady=5)
+    tk.Button(btn_frame, text="Newton-solucion_ecuaciones", width=22, command=abrir_ecua, bg="#ffd9b3").grid(row=2, column=0, padx=5, pady=5)
 
     tk.Label(root, text="(Se abrirán en ventanas separadas)", font=("Segoe UI", 8)).pack(pady=6)
     root.mainloop()
