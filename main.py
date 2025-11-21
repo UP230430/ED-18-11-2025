@@ -34,8 +34,6 @@ def abrir_newton():
 def abrir_ecua():
     run_script(ECUA_FILE)
 
-
-
 # Interfaz gráfica simple
 def crear_ventana():
     root = tk.Tk()
@@ -55,3 +53,4 @@ def crear_ventana():
 
 if __name__ == "__main__":
     crear_ventana()
+
