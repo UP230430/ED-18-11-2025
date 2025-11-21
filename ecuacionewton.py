@@ -33,7 +33,6 @@ def newton_all_steps(func_str, deriv_str, x0, iters):
 
     return x1, xs
 
-
 # ----------------- FUNCIÓN PRINCIPAL -----------------
 def calcular_todo():
     try:
@@ -46,9 +45,7 @@ def calcular_todo():
         texto_resultados.delete(1.0, tk.END)
         texto_resultados.insert(tk.END, "=== MÉTODO DE NEWTON PARA LAS DOS RAÍCES ===\n\n")
 
-        # ---------------------------------------------------
-        # 1️⃣ Obtener coeficientes a, b, c automáticamente
-        # ---------------------------------------------------
+        # Obtener coeficientes a, b, c automáticamente
         x = sp.Symbol("x")
         pol = sp.sympify(funcion_str)
         pol = sp.expand(pol)
@@ -59,24 +56,15 @@ def calcular_todo():
 
         texto_resultados.insert(tk.END, f"Ecuación característica:\n {a}m² + {b}m + {c} = 0\n\n")
 
-        discriminante = b**2 - 4*a*c
-        texto_resultados.insert(tk.END, f"Discriminante = {discriminante}\n\n")
-
-        # ---------------------------------------------------
-        # 2️⃣ Newton para m1
-        # ---------------------------------------------------
+        # Newton para m1
         m1, its1 = newton_all_steps(funcion_str, derivada_str, x0_1, iter_user)
         texto_resultados.insert(tk.END, f"Raíz 1 (m1) usando x0 = {x0_1} → {m1}\n")
 
-        # ---------------------------------------------------
-        # 3️⃣ Newton para m2
-        # ---------------------------------------------------
+        # Newton para m2
         m2, its2 = newton_all_steps(funcion_str, derivada_str, x0_2, iter_user)
         texto_resultados.insert(tk.END, f"Raíz 2 (m2) usando x0 = {x0_2} → {m2}\n\n")
 
-        # ---------------------------------------------------
-        # 4️⃣ Determinar tipo de solución + mostrar m₁ y m₂
-        # ---------------------------------------------------
+        # Determinar tipo de solución + mostrar m₁ y m₂
         if abs(m1 - m2) < 1e-6:
             caso = "Caso I (Raíz doble)"
             texto_resultados.insert(tk.END, "👉 CASO I: Raíz doble\n")
@@ -92,15 +80,11 @@ def calcular_todo():
                 f"x(t) = k1 · e^({m1:.6f}·t)  +  k2 · e^({m2:.6f}·t)\n"
             )
 
-        # ---------------------------------------------------
-        # 5️⃣ Reconstrucción de la ecuación diferencial
-        # ---------------------------------------------------
+        # Reconstrucción de la ecuación diferencial
         texto_resultados.insert(tk.END, "\n=== ECUACIÓN DIFERENCIAL ORIGINAL ===\n")
         texto_resultados.insert(tk.END, f"{a}x'' + {b}x' + {c}x = 0\n\n")
 
-        # ---------------------------------------------------
-        # 6️⃣ Graficar función característica
-        # ---------------------------------------------------
+        # Graficar función característica
         xs = np.linspace(-10, 10, 400)
         f_vals = [eval(funcion_str, {"x": x, "np": np}) for x in xs]
 
@@ -115,9 +99,7 @@ def calcular_todo():
         plt.legend()
         plt.show()
 
-        # ---------------------------------------------------
-        # 7️⃣ Gráfica de iteraciones de Newton para m1
-        # ---------------------------------------------------
+        # Gráfica de iteraciones de Newton para m1
         plt.figure(figsize=(8,5))
         its_f = [eval(funcion_str, {"x": x, "np": np}) for x in its1]
         plt.plot(its1, its_f, marker="o")
@@ -128,9 +110,7 @@ def calcular_todo():
         plt.grid(True)
         plt.show()
 
-        # ---------------------------------------------------
-        # 8️⃣ Gráfica de iteraciones de Newton para m2
-        # ---------------------------------------------------
+        # Gráfica de iteraciones de Newton para m2
         plt.figure(figsize=(8,5))
         its_f2 = [eval(funcion_str, {"x": x, "np": np}) for x in its2]
         plt.plot(its2, its_f2, marker="o")
@@ -141,9 +121,7 @@ def calcular_todo():
         plt.grid(True)
         plt.show()
 
-        # ---------------------------------------------------
-        # 9️⃣ Gráfica de la solución diferencial x(t)
-        # ---------------------------------------------------
+        # Gráfica de la solución diferencial x(t)
         t_vals = np.linspace(0, 10, 300)
 
         if abs(m1 - m2) < 1e-6:
