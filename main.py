@@ -49,7 +49,7 @@ def abrir_rk4():
 def crear_ventana():
     root = tk.Tk()
     root.title("Launcher - Programas")
-    root.geometry("360x360")
+    root.geometry("360x260")
     tk.Label(root, text="Selecciona un programa para abrir:", font=("Segoe UI", 11)).pack(pady=10)
 
     btn_frame = tk.Frame(root)
@@ -67,3 +67,4 @@ def crear_ventana():
 
 if __name__ == "__main__":
     crear_ventana()
+
